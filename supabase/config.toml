@@ -1,0 +1,44 @@
+# MediVault Supabase configuration.
+# Link this checkout to the existing project with:
+#   supabase link --project-ref oqxigyyagvqhlrxcuyxq
+
+project_id = "medivault"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173", "http://localhost:5173/"]
+jwt_expiry = 3600
+
+[storage]
+enabled = true
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+
+# create-share and revoke-share require a signed-in user.
+# resolve-share is public by design and validates the token itself.
+[functions.create-share]
+verify_jwt = true
+
+[functions.revoke-share]
+verify_jwt = true
+
+[functions.resolve-share]
+verify_jwt = false

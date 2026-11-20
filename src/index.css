@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * MediVault design tokens — final locked palette.
+ * Light mode: Slate Blue background, Light Gray base, white cards, Teal primary.
+ * Dark mode: deep slate background/cards, bone text, brighter teal.
+ * No blue or purple anywhere except Slate Blue itself.
+ */
+:root {
+  --bg: #4a6fa5;
+  --base: #d3d3d3;
+  --card: #ffffff;
+  --elevated: #ffffff;
+  --primary: #008080;
+  --primary-hover: #006666;
+  --accent: #e0e0e0;
+  --text: #1a2e2e;
+  --muted: #5a6b6b;
+  --tint: #e6f2f2;
+  --border: #e0e0e0;
+  --sidebar: #ffffff;
+  --shadow: rgba(26, 46, 46, 0.18);
+  --fg-rgb: 26 46 46;
+  --muted-rgb: 90 107 107;
+}
+
+[data-theme='dark'] {
+  --bg: #22374e;
+  --base: #1a2c3e;
+  --card: #2e4a66;
+  --elevated: #35536f;
+  --primary: #2aa5a5;
+  --primary-hover: #35b8b8;
+  --accent: #3a5670;
+  --text: #f2efe8;
+  --muted: #b8c4d0;
+  --tint: #24404f;
+  --border: rgba(242, 239, 232, 0.14);
+  --sidebar: #2e4a66;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --fg-rgb: 242 239 232;
+  --muted-rgb: 184 196 208;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+* {
+  transition-property: background-color, border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Thin scrollbars that match the theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
